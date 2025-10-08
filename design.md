@@ -30,7 +30,7 @@
 
 ## データベースの設計
 
-- Users
+- Users (ユーザー)
 
 |カラム名|型|KEY|NOT NULL|ユニーク制約|説明|
 |---|---|---|---|---|---|
@@ -40,7 +40,7 @@
 |password|VERCHER(50)||〇||パスワード|
 |created_at|DATETIME||〇||登録日時|
 
-- Accounts
+- Accounts (口座)
 
 |カラム名|型|KEY|NOT NULL|ユニーク制約|説明|
 |---|---|---|---|---|---|
@@ -50,14 +50,14 @@
 |account_type_id|VERCHER(5)||〇||口座タイプID|
 |remining_amount|INTEGER||〇||口座残高|
 
-- AccountsTypes
+- AccountsTypes (口座タイプ)
 
 |カラム名|型|KEY|NOT NULL|ユニーク制約|説明|
 |---|---|---|---|---|---|
 |account_type_id|VERCHER(3)|PRIMARY KEY|〇|〇|口座タイプID|
 |account_type|VERCHER(50)||〇||口座タイプ名|
 
-- Categories
+- Categories (カテゴリー)
 
 |カラム名|型|KEY|NOT NULL|ユニーク制約|説明|
 |---|---|---|---|---|---|
@@ -65,7 +65,7 @@
 |user_id|VERCHER(50)|FOREIGN KEY|〇|〇|ユーザID|
 |category_name|VERCHER(50)||〇||カテゴリー名|
 
-- Transactions
+- Transactions (取引記録)
 
 |カラム名|型|KEY|NOT NULL|ユニーク制約|説明|
 |---|---|---|---|---|---|
@@ -77,7 +77,7 @@
 |description|TEXT||||詳細|
 |transaction_date|DATETIME||〇||取引日|
 
-- Transfers
+- Transfers (振替記録)
 
 |カラム名|型|KEY|NOT NULL|ユニーク制約|説明|
 |---|---|---|---|---|---|
@@ -90,3 +90,34 @@
 |transfer_date|DATETIME||〇||振替日|
 
 ## 画面遷移図
+
+画面遷移図の設計を行う．
+
+- ログイン画面
+    - ログイン失敗
+- 新規登録画面
+    - 登録完了チュートリアル
+- ユーザープロフィール画面
+- ユーザープロフィール編集
+- ユーザー削除
+
+- メインメニュー
+    - 円グラフ(カテゴリー割合)
+        - 週，月での割合
+        - 二重円グラフみたいにして収入支出を同時表示
+    - 折れ線グラフ
+        - 日，週，月ごと (横軸)
+            - 収入
+            - 支出
+            - 固定支出を含める含めない
+    - 収支記録編集
+        - 要素の入力画面
+    - 振替記録編集
+        - 要素入力画面
+    - カテゴリ編集
+        - 要素入力画面
+    - 記録
+        - 最近の取引記録上位5件 (カスタマイズ可能にする)
+        - タブを開くと上位20件くらいを表示
+        - 記録の詳細表示
+    - 固定支出設定画面
